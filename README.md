@@ -44,6 +44,18 @@ npm run dev      # opens http://localhost:4321
 | `npm run dev`      | Local preview at `localhost:4321`            |
 | `npm run build`    | Build the static site to `./dist/`           |
 | `npm run preview`  | Preview the built site locally               |
+| `npm run optimize` | Resize/recompress oversized JPGs in `src/assets/artwork/` |
+
+## How image optimization works
+
+A `pre-commit` git hook runs `npm run optimize` automatically. It resizes
+any JPG wider than 2000px down to 2000px and re-encodes JPGs larger than
+1MB with mozjpeg at q85, in place. Files that are already small are left
+alone. PNG and WebP are skipped (so the extension never changes).
+
+This keeps the repo small without anyone having to think about it. The
+hook is registered via `simple-git-hooks` on `npm install` — if it ever
+gets out of sync, run `npx simple-git-hooks`.
 
 ## Project layout
 

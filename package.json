@@ -9,9 +9,18 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "optimize": "node scripts/optimize-artwork.mjs",
+    "postinstall": "simple-git-hooks"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npm run optimize --silent && git add src/assets/artwork"
   },
   "dependencies": {
     "astro": "^6.3.7"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5",
+    "simple-git-hooks": "^2.13.1"
   }
 }
