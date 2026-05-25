@@ -1,0 +1,126 @@
+:root {
+  --bg: #fffaf3;
+  --ink: #1a1a1a;
+  --muted: #6b6b6b;
+  --accent: #d946ef;
+  --card: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+header.site {
+  padding: 2.5rem 1.5rem 1rem;
+  text-align: center;
+}
+
+header.site h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+header.site p {
+  color: var(--muted);
+  margin: 0.25rem 0 0;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.gallery li {
+  background: var(--card);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.gallery li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.gallery a {
+  display: block;
+  color: inherit;
+}
+.gallery a:hover { text-decoration: none; }
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background: #f3f3f3;
+}
+
+.gallery .caption {
+  padding: 0.75rem 1rem 1rem;
+}
+
+.gallery .caption h2 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.gallery .caption time {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+article.piece {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+article.piece img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  background: #f3f3f3;
+}
+
+article.piece h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 1rem 0 0;
+}
+
+article.piece time {
+  color: var(--muted);
+}
+
+.back {
+  display: inline-block;
+  margin: 1rem 0;
+}
+
+footer.site {
+  text-align: center;
+  color: var(--muted);
+  padding: 3rem 1rem 2rem;
+  font-size: 0.9rem;
+}

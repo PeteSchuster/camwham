@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const pieces = await getCollection('artwork');
+  return pieces.map((piece) => ({
+    params: { slug: piece.id },
+    props: { piece },
+  }));
+}
+
+const { piece } = Astro.props;
+const { Content } = await render(piece);
+---
+<Base title={`${piece.data.title} — camwham`}>
+  <a href="/" class="back">← back to the gallery</a>
+  <article class="piece">
+    <Image
+      src={piece.data.image}
+      alt={piece.data.title}
+      widths={[640, 1024, 1600]}
+      sizes="(min-width: 1024px) 900px, 100vw"
+    />
+    <h1>{piece.data.title}</h1>
+    <time datetime={piece.data.date.toISOString()}>
+      {piece.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+    </time>
+    <Content />
+  </article>
+</Base>

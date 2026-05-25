@@ -1,0 +1,28 @@
+---
+import '../styles/global.css';
+interface Props {
+  title?: string;
+}
+const { title = "Cameron's Art" } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="site">
+      <h1><a href="/" style="color: inherit;">camwham</a></h1>
+      <p>art by Cameron</p>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site">
+      made with crayons and code
+    </footer>
+  </body>
+</html>
